@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   
   .AppHeader {
     background-color: #222;
@@ -17,8 +20,10 @@
     }
   }
 
-  .AppIntro {
-    font-size: large;
+  .AppContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
   }
 }
 

@@ -18,7 +18,12 @@
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "paths": {
+      "@app/*": ["src/app/*"],
+      "@redux": ["src/redux"],
+      "@redux/*": ["src/redux/*"]
+    }
   },
   "exclude": [
     "node_modules",
