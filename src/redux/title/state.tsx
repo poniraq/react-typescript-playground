@@ -1,2 +1,2 @@
 export const DefaultState = '';
-export type TitleState = string; 
+export type TitleState = string;

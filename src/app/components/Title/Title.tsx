@@ -2,7 +2,7 @@ import * as React from 'react';
 import './Title.scss';
 
 interface Props {
-    title: string
+    title: string;
 }
 
 export class Title extends React.Component<Props> {

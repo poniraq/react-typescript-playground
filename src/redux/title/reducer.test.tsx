@@ -1,5 +1,5 @@
 import { TitleReducer } from './reducer';
-import { setTitle } from './actions';
+import { TitleAction } from './actions';
 
 describe('title reducer', () => {
   it('should accept 2 arguments', () => {
@@ -24,13 +24,21 @@ describe('title reducer', () => {
     expect(reducer(state, action)).toEqual(state);
   });
 
-  it('should return updated state on SET_TITLE', () => {
+  it('should do nothing on SET_TITLE', () => {
     const state = 'some_state';
     const new_state = 'new_state';
     const reducer = TitleReducer;
-    const action = setTitle(new_state);
+    const action = TitleAction.SetTitle(new_state);
 
-    expect(reducer(state, action) === state).toBeFalsy();
+    expect(reducer(state, action)).toEqual(state);
+  });
+
+  it('should do update title on NEW_TITLE', () => {
+    const state = 'some_state';
+    const new_state = 'new_state';
+    const reducer = TitleReducer;
+    const action = TitleAction.NewTitle(new_state);
+
     expect(reducer(state, action)).toEqual(new_state);
   });
 });

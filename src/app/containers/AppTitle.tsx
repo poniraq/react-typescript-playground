@@ -1,8 +1,8 @@
 import { Title } from '../components/Title';
-import { State } from 'src/redux';
+import { RootState, selectors } from '@redux';
 import { connect } from 'react-redux';
 
-export function mapStateToProps({ title }: State) {
-    return { title };
+export function mapStateToProps(state: RootState) {
+    return { title: selectors.getTitle(state) };
 }
 export default connect(mapStateToProps)(Title);

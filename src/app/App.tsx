@@ -2,7 +2,7 @@ import * as React from 'react';
 import './App.scss';
 import Title from './containers/AppTitle';
 import logo from './logo.svg';
-import { Home } from './scenes/Home/Home';
+import Posts from './scenes/Posts';
 
 export class App extends React.Component {
   public render() {
@@ -13,7 +13,7 @@ export class App extends React.Component {
           <Title />
         </header>
         <div className="AppContent">
-          <Home />
+          <Posts />
         </div>
       </div>
     );
