@@ -54,7 +54,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "coverage": "node scripts/test.js --coverage --env=jsdom"
   },
   "devDependencies": {
     "@types/enzyme": "^3.1.14",
@@ -93,7 +94,10 @@
     ],
     "moduleNameMapper": {
       "^react-native$": "react-native-web",
-      "src/(.*)": "<rootDir>/src/$1"
+      "src/(.*)": "<rootDir>/src/$1",
+      "@app/(.*)": "<rootDir>/src/app/$1",
+      "@redux": "<rootDir>/src/redux",
+      "@redux/(.*)": "<rootDir>/src/redux/$1"
     },
     "moduleFileExtensions": [
       "web.ts",

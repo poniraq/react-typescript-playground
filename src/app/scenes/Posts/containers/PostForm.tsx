@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import PostForm from '../components/PostForm';
 
-
 export function mapStateToProps(state: RootState) {
     return { post: selectors.getNewPost(state) };
 }

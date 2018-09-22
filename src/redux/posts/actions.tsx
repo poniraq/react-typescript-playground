@@ -31,8 +31,11 @@ export namespace PostsAction {
     | NewPost;
 }
   
-
 export namespace PostsAction {
+  export const FetchPosts = (_page = 1): FetchPosts => ({
+    type: PostsAction.FETCH_POSTS
+  });
+
   export const FetchPostsSuccess = (posts: Post[]): FetchPostsSuccess => ({
     type: PostsAction.FETCH_POSTS_SUCCESS,
     payload: posts
@@ -43,12 +46,13 @@ export namespace PostsAction {
     error
   });
 
-  export const FetchPosts = (_page = 1): FetchPosts => ({
-    type: PostsAction.FETCH_POSTS
-  });
-
   export const AddPost = (post: Post): AddPost => ({
     type: PostsAction.ADD_POST,
-    payload: { ...post, id: +(new Date()) }
+    payload: post
+  });
+
+  export const NewPost = (post: Post): NewPost => ({
+    type: PostsAction.NEW_POST,
+    payload: post
   });
 }

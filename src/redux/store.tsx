@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
-import { createStore as ReduxStore, Reducer, Store, applyMiddleware, compose } from 'redux';
+import { applyMiddleware, compose, createStore as ReduxStore, Reducer, Store } from 'redux';
 import { createEpicMiddleware } from 'redux-observable';
-import { RootReducer, RootEpic, RootState, RootAction } from './root';
+import { RootAction, RootEpic, RootReducer, RootState } from './root';
 
 export function createStore(reducer: Reducer<RootState, RootAction>) {
-  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+  const composeEnhancers = global.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
   
-  const epicMiddleware = createEpicMiddleware();
+  const epicDependencies = {};
+  const epicMiddleware = createEpicMiddleware({ dependencies: epicDependencies });
   const middleware = [ epicMiddleware ];
   const enhancer = composeEnhancers(applyMiddleware(...middleware));
  

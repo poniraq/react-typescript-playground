@@ -1,44 +1,37 @@
 import { TitleReducer } from './reducer';
 import { TitleAction } from './actions';
+import { DefaultState } from './state';
 
-describe('title reducer', () => {
-  it('should accept 2 arguments', () => {
-    expect(TitleReducer.length).toEqual(2);
-  });
+describe('TitleReducer', () => {
+  const state = DefaultState;
+  const reducer = TitleReducer;
 
   it('should return original state if no action is provided', () => {
-    const reducer = TitleReducer as any;
-    const state = 'some_state';
-
-    expect(reducer(state, {})).toEqual(state);
+    expect(reducer(state, {} as any)).toEqual(state);
   });
 
   it('should return original state if action is unhandled', () => {
-    const reducer = TitleReducer as any;
-    const state = 'some_state';
     const action = {
       type: 'some_type',
       payload: 'some_paylaod'
     };
 
-    expect(reducer(state, action)).toEqual(state);
+    expect(reducer(state, action as any)).toEqual(state);
   });
 
   it('should do nothing on SET_TITLE', () => {
-    const state = 'some_state';
-    const new_state = 'new_state';
-    const reducer = TitleReducer;
-    const action = TitleAction.SetTitle(new_state);
+    const newState = 'new_state';
+    const action = TitleAction.SetTitle(newState);
 
+    expect(reducer(state, action)).not.toEqual(newState);
     expect(reducer(state, action)).toEqual(state);
   });
 
-  it('should do update title on NEW_TITLE', () => {
-    const state = 'some_state';
-    const new_state = 'new_state';
-    const reducer = TitleReducer;
-    const action = TitleAction.NewTitle(new_state);
+  it('should update title on NEW_TITLE', () => {
+    const newState = 'new_state';
+    const action = TitleAction.NewTitle(newState);
 
-    expect(reducer(state, action)).toEqual(new_state);
+    expect(reducer(state, action)).not.toEqual(state);
+    expect(reducer(state, action)).toEqual(newState);
   });
 });

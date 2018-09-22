@@ -10,11 +10,6 @@ describe('<Title /> Component', () => {
     const el = createElement();
     expect(el).toBeDefined();
   });
-
-  it('has correct class', () => {
-    const el = createElement();
-    expect(el.hasClass('Title')).toBeTruthy();
-  });
   
   it('displays title', () => {
     const el = createElement();

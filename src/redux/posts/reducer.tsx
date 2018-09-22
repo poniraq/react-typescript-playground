@@ -7,7 +7,7 @@ export const PostsReducer: Reducer<PostsState, PostsAction.Type> = function (sta
     case PostsAction.FETCH_POSTS:
       return { ...state, fetching: true, error: undefined };
     case PostsAction.FETCH_POSTS_SUCCESS:
-      return { ...state, fetching: false, posts: action.payload };
+      return { ...state, fetching: false, posts: action.payload, error: undefined };
     case PostsAction.FETCH_POSTS_FAILURE:
       return { ...state, fetching: false, posts: [], error: action.error };
     case PostsAction.ADD_POST:

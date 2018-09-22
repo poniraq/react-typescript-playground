@@ -2,7 +2,7 @@ import * as React from 'react';
 import './Field.scss';
 
 interface Props {
-  title: string;
+  value: string;
   onChange: (title: string) => void;
 }
 
@@ -14,10 +14,10 @@ export class Field extends React.Component<Props> {
   }
 
   render() {
-    const { title } = this.props;
+    const { value } = this.props;
 
     return (
-      <input onChange={this.onChange} type="text" value={title} />
+      <input onChange={this.onChange} type="text" value={value} />
     );
   }
 }
