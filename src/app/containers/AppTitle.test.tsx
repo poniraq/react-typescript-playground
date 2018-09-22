@@ -4,7 +4,7 @@ import Title from './AppTitle';
 import { StoreProvider } from 'src/redux';
 
 const createElement = () => {
-  const wrapper = enzyme.shallow(
+  const wrapper = enzyme.mount(
     <StoreProvider>
       <Title />
     </StoreProvider>

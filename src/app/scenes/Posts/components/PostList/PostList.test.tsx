@@ -11,7 +11,7 @@ describe('PostList', () => {
   };
 
   it('renders without crashing', () => {
-    const list = enzyme.shallow(<PostList {...props} />);
+    const list = enzyme.mount(<PostList {...props} />);
     expect(list).toBeDefined();
   });
 });

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Title } from './Title';
 
 const title = 'TEST_TITLE';
-const createElement = () => enzyme.shallow(<Title title={title} />);
+const createElement = () => enzyme.mount(<Title title={title} />);
 
 describe('<Title /> Component', () => {
   it('renders without crashing', () => {

@@ -10,7 +10,7 @@ describe('Field', () => {
   };
 
   it('renders without crashing', () => {
-    const field = enzyme.shallow(<Field {...props} />);
+    const field = enzyme.mount(<Field {...props} />);
     expect(field).toBeDefined();
   });
 });

@@ -10,7 +10,7 @@ describe('PostForm', () => {
   };
 
   it('renders without crashing', () => {
-    const form = enzyme.shallow(<PostForm {...props} />);
+    const form = enzyme.mount(<PostForm {...props} />);
     expect(form).toBeDefined();
   });
 });
