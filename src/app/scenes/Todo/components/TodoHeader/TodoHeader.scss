@@ -1,0 +1,24 @@
+.TodoHeader {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  box-sizing: border-box;
+
+  .TodoHeaderTitle {
+    text-align: center;
+    margin: 0 0 16px 0;
+    font-size: 28px;
+    color: #424242;
+  }
+
+  .TodoHeaderInput {
+    border-radius: 4px;
+    border: 1px solid #cccccc;
+    font-size: 18px;
+    padding: 8px;
+
+    &::placeholder {
+      color: #cccccc;
+    }
+  }
+}

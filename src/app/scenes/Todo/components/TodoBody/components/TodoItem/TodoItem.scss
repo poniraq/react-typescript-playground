@@ -1,0 +1,33 @@
+.TodoItem {
+  display: flex;
+  flex-direction: row;
+  font-size: 18px;
+  color: #545454;
+  border-bottom: 1px solid #c5c5c5;
+
+  &:last-child {
+    border-bottom: unset;
+  }
+
+  .content {
+    padding: 16px;
+    flex: 1;
+  }
+
+  .remove-button {
+    border: none;
+    background-color: transparent;
+    width: 48px;
+    padding: 0;
+    cursor: pointer;
+    color: transparent;
+
+    transition: color 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95),
+      background-color 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+
+    &:hover {
+      background-color: rgba(0,0,0, 0.05);
+      color: gray;
+    }
+  }
+}
