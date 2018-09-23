@@ -5,9 +5,9 @@
   flex-direction: column;
   
   .AppHeader {
+    display: flex;
     background-color: #222;
-    height: 150px;
-    padding: 20px;
+    padding: 8px;
     color: white;
 
     .AppTitle {
@@ -24,6 +24,8 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+    overflow-y: auto;
   }
 }
 

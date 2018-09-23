@@ -2,7 +2,8 @@ import * as React from 'react';
 import './App.scss';
 import Title from './containers/AppTitle';
 import logo from './logo.svg';
-import Posts from './scenes/Posts';
+import Router from './Router';
+import { BrowserRouter } from 'react-router-dom';
 
 export class App extends React.Component {
   public render() {
@@ -13,7 +14,9 @@ export class App extends React.Component {
           <Title />
         </header>
         <div className="AppContent">
-          <Posts />
+          <BrowserRouter>
+            <Router />
+          </BrowserRouter>
         </div>
       </div>
     );
