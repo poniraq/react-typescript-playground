@@ -3,7 +3,7 @@ import './App.scss';
 import Title from './containers/AppTitle';
 import logo from './logo.svg';
 import Router from './Router';
-import { BrowserRouter } from 'react-router-dom';
+import ButtonLink from './components/ButtonLink';
 
 export class App extends React.Component {
   public render() {
@@ -11,12 +11,13 @@ export class App extends React.Component {
       <div className="App">
         <header className="AppHeader">
           <img src={logo} className="AppLogo" alt="logo" />
-          <Title />
+          <Title className="AppTitle" />
+
+          <ButtonLink className="AppLink" to="/posts">POSTS</ButtonLink>
+          <ButtonLink className="AppLink" to="/todo">TODO</ButtonLink>
         </header>
         <div className="AppContent">
-          <BrowserRouter>
-            <Router />
-          </BrowserRouter>
+          <Router />
         </div>
       </div>
     );

@@ -11,12 +11,27 @@
     color: white;
 
     .AppTitle {
-      font-size: 1.5em;
+      flex: 1;
     }
   
     .AppLogo {
       animation: App-logo-spin infinite 20s linear;
       height: 80px;
+    }
+
+    .AppLink {
+      width: 80px;
+      align-self: center;
+      margin-right: 10px;
+
+      &:last-child {
+        margin-right: unset;
+      }
+
+      & > button {
+        background-color: #4ebbc7;
+        color: white;
+      }
     }
   }
 

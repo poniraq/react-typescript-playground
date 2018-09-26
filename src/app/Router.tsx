@@ -6,13 +6,11 @@ import Todo from './scenes/Todo';
 export class Router extends React.Component {
   render() {
     return (
-      <React.Fragment>
-        <Switch>
-          <Route path="/posts" component={Posts} />
-          <Route path="/todo" component={Todo} />
-          <Redirect from="" to="/posts"  />
-        </Switch>
-      </React.Fragment>
+      <Switch>
+        <Route path="/posts" component={Posts} />
+        <Route path="/todo" component={Todo} />
+        <Redirect from="" to="/posts"  />
+      </Switch>
     );
   }
 }

@@ -1,16 +1,16 @@
 import * as React from 'react';
 import './Title.scss';
 
-interface Props {
+interface Props extends React.HTMLAttributes<HTMLDivElement> {
     title: string;
 }
 
 export class Title extends React.Component<Props> {
     render() {
-        const { title } = this.props;
+        const { title, className, ...rest } = this.props;
 
         return (
-            <h1 className="Title">{title}</h1>
+            <h1 className={`Title ${className}`} {...rest} >{title}</h1>
         );
     }
 }

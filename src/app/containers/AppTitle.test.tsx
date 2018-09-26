@@ -1,7 +1,7 @@
 import * as enzyme from 'enzyme';
 import * as React from 'react';
 import Title from './AppTitle';
-import { StoreProvider } from 'src/redux';
+import { StoreProvider } from '@redux';
 
 const createElement = () => {
   const wrapper = enzyme.shallow(
