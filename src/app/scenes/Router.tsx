@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Redirect, Route, Switch } from 'react-router';
-import Posts from './scenes/Posts';
-import Todo from './scenes/Todo';
+import Posts from './Posts/loader';
+import Todo from './Todo/loader';
 
 export class Router extends React.Component {
   render() {

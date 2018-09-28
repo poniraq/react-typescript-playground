@@ -12,6 +12,8 @@
   .content {
     padding: 16px;
     flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .remove-button {

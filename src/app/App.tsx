@@ -1,9 +1,9 @@
+import ButtonLink from '@app/components/ButtonLink';
+import Title from '@app/containers/AppTitle';
+import Router from '@app/scenes/Router';
 import * as React from 'react';
 import './App.scss';
-import Title from './containers/AppTitle';
 import logo from './logo.svg';
-import Router from './Router';
-import ButtonLink from './components/ButtonLink';
 
 export class App extends React.Component {
   public render() {
