@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Input } from 'antd';
 import './TodoHeader.scss';
 
 
@@ -37,7 +38,7 @@ export class TodoHeader extends React.Component<Props, State> {
     return (
       <header className="TodoHeader">
         <h3 className="TodoHeaderTitle">{title}</h3>
-        <input className="TodoHeaderInput" type="text" placeholder={placeholder} value={todo} onChange={this.onChange} onKeyDown={this.onKeyDown} />
+        <Input className="TodoHeaderInput" size="large" type="text" placeholder={placeholder} value={todo} onChange={this.onChange} onKeyDown={this.onKeyDown} />
       </header>
     );
   }

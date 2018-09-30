@@ -12,6 +12,9 @@
 
     .AppTitle {
       flex: 1;
+      font-size: 36px;
+      line-height: 62px;
+      color: white;
     }
   
     .AppLogo {
@@ -26,11 +29,6 @@
 
       &:last-child {
         margin-right: unset;
-      }
-
-      & > button {
-        background-color: #4ebbc7;
-        color: white;
       }
     }
   }

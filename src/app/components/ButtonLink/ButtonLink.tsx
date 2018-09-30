@@ -1,12 +1,14 @@
 import * as React from 'react';
+import { Button } from 'antd';
 import { Link, LinkProps } from 'react-router-dom';
 import './ButtonLink.scss';
+
 
 export type Props = LinkProps;
 export const ButtonLink: React.StatelessComponent<Props> = ({ className, children, ...rest }) => {
   return (
     <Link className={`ButtonLink ${className}`} {...rest}>
-      <button>{children}</button>
+      <Button type="primary">{children}</Button>
     </Link>
   );
 };
