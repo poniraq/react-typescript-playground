@@ -6,7 +6,8 @@ import { Title } from '../components/Title';
 export function mapStateToProps(state: RootState) {
     return { title: selectors.getTitle(state) };
 }
-export function mapDispatchToProps(dispatch: Dispatch<RootAction>) {
+export function mapDispatchToProps(_dispatch: Dispatch<RootAction>) {
     return {};
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Title);
+export const AppTitle = connect(mapStateToProps, mapDispatchToProps)(Title);
+export default AppTitle;

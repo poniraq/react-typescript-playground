@@ -1,15 +1,10 @@
 import { TodoAction } from './actions';
 import { Todo } from './types';
-// import { State } from './state';
 
-// const title = 'some_title';
 const todo: Todo = { id: undefined, title: 'some_todo_title' };
 const error = 'some_error';
-// const state:  = { title, todos, fet };
 
 describe('TodoAction', () => {
-  const title = 'some_title';
-
   describe('AddTodo', () => {
     const action = TodoAction.AddTodo(todo);
 

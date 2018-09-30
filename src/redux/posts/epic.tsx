@@ -1,7 +1,7 @@
 import { combineEpics, Epic, ofType } from 'redux-observable';
 import { of } from 'rxjs';
 import { ajax, AjaxError } from 'rxjs/ajax';
-import { catchError, map, switchMap } from 'rxjs/operators';
+import { catchError, map, switchMap, delay } from 'rxjs/operators';
 import { PostsAction } from './actions';
 import { PostsState } from './state';
 import { Post } from './types';
@@ -20,6 +20,7 @@ const FetchPostsEpic: Epic<ActionType, ActionType, PostsState> = (action$) =>
     ofType(PostsAction.FETCH_POSTS),
     switchMap(() => 
       ajax.getJSON<Post[]>('https://jsonplaceholder.typicode.com/posts').pipe(
+        delay(500),
         map(posts => PostsAction.FetchPostsSuccess(posts)),
         catchError((error: AjaxError) => of(PostsAction.FetchPostsFailure(error.message)))
       )

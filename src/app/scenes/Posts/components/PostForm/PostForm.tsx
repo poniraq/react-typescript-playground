@@ -1,5 +1,6 @@
-import * as React from "react";
+import * as React from 'react';
 import { Post } from '@redux/posts';
+import './PostForm.scss';
 
 interface Props {
   post: Post;
@@ -32,10 +33,11 @@ export default class PostForm extends React.Component<Props, State> {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.onSubmit}>
-          <input type="text" onChange={this.onChange} name="title"/><br />
-          <input type="text" onChange={this.onChange} name="body"/><br />
+      <div className="PostFormHost">
+        <h2 className="PostFormTitle">ADD POST</h2>
+        <form className="PostFormBody" onSubmit={this.onSubmit}>
+          <input type="text" onChange={this.onChange} name="title"/>
+          <input type="text" onChange={this.onChange} name="body"/>
           <button type="submit">SUBMIT</button>
         </form>
       </div>

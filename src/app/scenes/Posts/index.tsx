@@ -1,4 +1,4 @@
 export * from './Posts';
 export * from './loader';
 
-export { default } from "./Posts";
+export { default } from './Posts';

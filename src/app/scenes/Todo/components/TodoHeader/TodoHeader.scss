@@ -3,6 +3,7 @@
   flex-direction: column;
   padding: 16px;
   box-sizing: border-box;
+  flex-shrink: 0;
 
   .TodoHeaderTitle {
     text-align: center;

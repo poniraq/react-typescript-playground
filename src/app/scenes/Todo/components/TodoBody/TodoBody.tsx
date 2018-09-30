@@ -1,8 +1,9 @@
-import { Todo } from '@redux/todo/types';
 import * as React from 'react';
+import { PoseGroup } from 'react-pose';
+import { Todo } from '@redux/todo/types';
+import { PosedComponent } from '@app/components';
 import { TodoItem } from './components';
 import './TodoBody.scss';
-
 
 interface Props {
   todos: Todo[];
@@ -11,27 +12,30 @@ interface Props {
   remove: (todo: Todo) => void;
 }
 
+const PosedTodoItem = PosedComponent(TodoItem, {
+  enter: { opacity: 1, height: 'auto' },
+  exit: { opacity: 0, height: 0 }
+});
+
 export class TodoBody extends React.Component<Props> {
   componentDidMount() {
     this.props.fetch();
   }
 
   render() {
-    let content: JSX.Element[];
-
-    if (this.props.loading) {
-      content = [(
-        <div key="error" className="TodoBodyLoading">Loading...</div>
-      )];
-    } else {
-      content = this.props.todos.filter((todo) => !todo.deleted).map((todo) => (
-        <TodoItem key={todo.id} value={todo} onRemove={this.props.remove}/>
-      ));
-    }
+    const { loading } = this.props;
 
     return (
       <ul className="TodoBody">
-          {...content}
+        { loading ? (
+          <div key="error" className="TodoBodyLoading">Loading...</div>
+        ) : (
+          <PoseGroup>
+            { this.props.todos.filter((todo) => !todo.deleted).map((todo, index) => (
+              <PosedTodoItem key={todo.id} value={todo} onRemove={this.props.remove} i={index}/>
+            )) }
+          </PoseGroup>
+        ) }
       </ul>
     );
   }

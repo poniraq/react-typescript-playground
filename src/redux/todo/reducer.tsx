@@ -7,7 +7,7 @@ export const TodoReducer: Reducer<TodoState, TodoAction.Type> = function (state 
     case TodoAction.ADD_TODO:
       return state;
     case TodoAction.NEW_TODO:
-      return { ...state, todos: state.todos.concat(action.payload) };
+      return { ...state, todos: [action.payload].concat(state.todos) };
     
     case TodoAction.FETCH_TODOS:
       return { ...state, fetching: true };

@@ -1,41 +1,54 @@
-import * as React from "react";
 import { Post } from '@redux/posts';
+import * as React from 'react';
+import posed, { PoseGroup } from 'react-pose';
+import { LoadingMask, PosedComponent } from '@app/components';
 import './PostList.scss';
 
-export interface Props {
+
+export interface PostListProps {
   posts: Post[];
   error: string;
   loading: boolean;
   fetch: () => void;
 }
 
-export default class PostList extends React.Component<Props> {
-  componentWillMount() {
+const Mask = PosedComponent(LoadingMask, {
+  enter: { opacity: 1 },
+  exit: { opacity: 0 }
+});
+
+const PostItem = posed.div({
+  enter: { opacity: 1, x: 0, delay: ({ i }: { i: number }) => i * 50 },
+  exit: { opacity: 0, x: -100 }
+});
+
+export default class PostList extends React.Component<PostListProps> {
+  componentDidMount() {
     this.props.fetch();
   }
 
   render() {
     const { posts, error, loading } = this.props;
-    const postItems = posts.map((data) => (
-      <div className="PostItem" key={data.id}>
+
+    if (loading) {
+      return (
+        <Mask key="mask" size={96}/>
+      );
+    }
+
+    const postItems = posts.map((data, index) => (
+      <PostItem className="PostItem" key={data.id} i={index}>
         <p className="PostTitle">{data.title}</p>
         <p className="PostBody">{data.body}</p>
-      </div>
+      </PostItem>
     ));
 
     return (
       <div className="PostList">
-        {error
-          ? <h2>{error}</h2>
-          : null}
-        {loading 
-          ? <div className="PostListMask">
-              <p className="PostListMaskText">
-                Loading...
-              </p>
-            </div>
-          : null}
-        { postItems }
+        {error && <h2>{error}</h2>}
+        <PoseGroup animateOnMount={true}>
+          { postItems }
+        </PoseGroup>
       </div>
     );
   }

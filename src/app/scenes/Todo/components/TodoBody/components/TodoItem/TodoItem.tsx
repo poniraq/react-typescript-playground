@@ -2,21 +2,24 @@ import * as React from 'react';
 import { Todo } from '@redux/todo/types';
 import './TodoItem.scss';
 
-interface Props {
+export type TodoItemRefType = HTMLLIElement;
+export type TodoItemRef = React.Ref<TodoItemRefType>;
+export interface TodoItemProps {
   value: Todo;
   onRemove: (todo: Todo) => void;
+  forwardRef?: TodoItemRef;
 }
 
-export class TodoItem extends React.Component<Props> {
+class TodoItem extends React.Component<TodoItemProps> {
   onClick = () => {
     this.props.onRemove(this.props.value);
   }
   
   render() {
-    const { value } = this.props;
+    const { value, forwardRef } = this.props;
 
     return (
-      <li className="TodoItem" key={value.id}>
+      <li ref={forwardRef} className="TodoItem" key={value.id}>
         <span className="content">
           {value.title}
         </span>
@@ -27,4 +30,12 @@ export class TodoItem extends React.Component<Props> {
     );
   }
 }
-export default TodoItem;
+
+const ForwardingTodoItem = React.forwardRef<TodoItemRefType, TodoItemProps>((props, ref) => (
+  <TodoItem {...props} forwardRef={ref} />
+));
+
+export {
+  ForwardingTodoItem as TodoItem,
+  ForwardingTodoItem as default
+};
