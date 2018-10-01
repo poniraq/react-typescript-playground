@@ -1,11 +1,11 @@
-import { PostsAction } from './actions';
+import { Types, Creators } from './actions';
 import { PostsReducer } from './reducer';
 import { PostsState } from './state';
 import { PostsEpic } from './epic';
 
-export * from './types';
 export {
-  PostsAction as Action,
+  Types as ActionTypes,
+  Creators as ActionCreators,
   PostsEpic as Epic,
   PostsReducer as Reducer,
   PostsState as State

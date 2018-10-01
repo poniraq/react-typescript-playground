@@ -1,12 +1,12 @@
-import { TodoAction } from './actions';
-import { Todo } from './types';
+import Creators from './creators';
+import { Todo } from '../types';
 
 const todo: Todo = { id: undefined, title: 'some_todo_title' };
 const error = 'some_error';
 
-describe('TodoAction', () => {
+describe('Creators', () => {
   describe('AddTodo', () => {
-    const action = TodoAction.AddTodo(todo);
+    const action = Creators.AddTodo(todo);
 
     it('creates without error', () => {
       expect(action).toBeDefined();
@@ -18,7 +18,7 @@ describe('TodoAction', () => {
   });
 
   describe('NewTodo', () => {
-    const action = TodoAction.NewTodo(todo);
+    const action = Creators.NewTodo(todo);
 
     it('creates without error', () => {
       expect(action).toBeDefined();
@@ -31,7 +31,7 @@ describe('TodoAction', () => {
 
   
   describe('FetchTodos', () => {
-    const action = TodoAction.FetchTodos();
+    const action = Creators.FetchTodos();
 
     it('creates without error', () => {
       expect(action).toBeDefined();
@@ -39,7 +39,7 @@ describe('TodoAction', () => {
   });
 
   describe('FetchTodosSuccess', () => {
-    const action = TodoAction.FetchTodosSuccess([todo]);
+    const action = Creators.FetchTodosSuccess([todo]);
 
     it('creates without error', () => {
       expect(action).toBeDefined();
@@ -51,7 +51,7 @@ describe('TodoAction', () => {
   });
 
   describe('FetchTodosFailure', () => {
-    const action = TodoAction.FetchTodosFailure(error);
+    const action = Creators.FetchTodosFailure(error);
 
     it('creates without error', () => {
       expect(action).toBeDefined();
@@ -64,7 +64,7 @@ describe('TodoAction', () => {
 
 
   describe('RemoveTodo', () => {
-    const action = TodoAction.RemoveTodo(todo);
+    const action = Creators.RemoveTodo(todo);
 
     it('creates without error', () => {
       expect(action).toBeDefined();
@@ -76,7 +76,7 @@ describe('TodoAction', () => {
   });
 
   describe('TodoRemoved', () => {
-    const action = TodoAction.TodoRemoved(todo);
+    const action = Creators.TodoRemoved(todo);
 
     it('creates without error', () => {
       expect(action).toBeDefined();

@@ -1,7 +1,7 @@
-import { Post } from '@redux/posts';
 import * as React from 'react';
 import posed, { PoseGroup } from 'react-pose';
 import { LoadingMask, PosedComponent } from '@app/components';
+import { Post } from '../../redux/types';
 import './PostList.scss';
 
 

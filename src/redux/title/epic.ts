@@ -10,3 +10,5 @@ export const TitleEpic: Epic<ActionType, ActionType, TitleState> = (action$) =>
     ofType(TitleAction.SET_TITLE),
     map((action: TitleAction.SetTitle) => TitleAction.NewTitle(action.payload)
   ));
+
+export default TitleEpic;

@@ -12,3 +12,4 @@ export const TitleReducer: Reducer<TitleState, TitleAction.Type> = function (tit
       return title;
   }
 };
+export default TitleReducer;

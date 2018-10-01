@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Todo } from '@redux/todo/types';
+import { Todo } from '../../../../redux/types';
 import './TodoItem.scss';
 
 export type TodoItemRefType = HTMLLIElement;

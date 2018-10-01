@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { TodoHeader, TodoBody } from './containers';
+import { TodoBody, TodoHeader } from './containers';
+import './redux/injector';
 import './Todo.scss';
+
 
 export class Todo extends React.Component {
   render() {

@@ -28,3 +28,4 @@ export namespace TitleAction {
   });
 }
 
+export default TitleAction;

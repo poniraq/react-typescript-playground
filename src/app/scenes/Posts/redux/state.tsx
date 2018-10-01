@@ -13,3 +13,9 @@ export interface PostsState {
   fetching: boolean;
   error: string | undefined;
 }
+
+export interface StoreState {
+  posts: PostsState;
+}
+
+export default PostsState;

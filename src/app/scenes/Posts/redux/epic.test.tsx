@@ -1,26 +1,28 @@
+import { ActionsObservable } from 'redux-observable';
 import { Observable, of } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
-import { PostsAction } from './actions';
+
+import Types from './actions/types';
+import Creators from './actions/creators';
 import { PostsEpic } from './epic';
 import { Post } from './types';
-import { ActionsObservable } from 'redux-observable';
 
 const post: Post = { id: undefined, title: 'some_title', body: 'some_body' };
 
 describe('PostsEpic', () => {
   describe('AddPostEpic', () => {
-    const action$ = new ActionsObservable(of(PostsAction.AddPost(post)));
+    const action$ = new ActionsObservable(of(Creators.AddPost(post)));
     const epic = PostsEpic(action$, {} as any, {});
 
     it('emits NEW_POST action', (done) => {
-      epic.subscribe((action: PostsAction.NewPost) => {
-        expect(action.type).toEqual(PostsAction.NEW_POST);
+      epic.subscribe((action: Types.NewPost) => {
+        expect(action.type).toEqual(Types.NEW_POST);
         done();
       });
     });
 
     it('emits with correct payload', (done) => {
-      epic.subscribe((action: PostsAction.NewPost) => {
+      epic.subscribe((action: Types.NewPost) => {
         expect(action.payload.title).toEqual(post.title);
         expect(action.payload.body).toEqual(post.body);
         done();
@@ -28,7 +30,7 @@ describe('PostsEpic', () => {
     });
 
     it('adds "id" to the post', (done) => {
-      epic.subscribe((action: PostsAction.NewPost) => {
+      epic.subscribe((action: Types.NewPost) => {
         expect(post.id).toBeUndefined();
         expect(action.payload.id).toBeDefined();
         done();
@@ -38,7 +40,7 @@ describe('PostsEpic', () => {
 
   describe('FetchPostsEpic', () => {
     const errorMessage = 'some_error_message';
-    const action$ = new ActionsObservable(of(PostsAction.FetchPosts()));
+    const action$ = new ActionsObservable(of(Creators.FetchPosts()));
     const epic = PostsEpic(action$, {} as any, {});
 
     describe('on success', () => {
@@ -48,7 +50,7 @@ describe('PostsEpic', () => {
 
       it('emits FETCH_POSTS_SUCCESS', (done) => {
         epic.subscribe(action => {
-          expect(action.type).toEqual(PostsAction.FETCH_POSTS_SUCCESS);
+          expect(action.type).toEqual(Types.FETCH_POSTS_SUCCESS);
           done();
         });
       });
@@ -61,7 +63,7 @@ describe('PostsEpic', () => {
       });
   
       it('does not mutate data', (done) => {
-        epic.subscribe((action: PostsAction.FetchPostsSuccess) => {
+        epic.subscribe((action: Types.FetchPostsSuccess) => {
           expect(action.payload).toEqual([ post ]);
           done();
         });
@@ -75,13 +77,13 @@ describe('PostsEpic', () => {
 
       it('emits FETCH_POSTS_FAILURE', (done) => {
         epic.subscribe(action => {
-          expect(action.type).toEqual(PostsAction.FETCH_POSTS_FAILURE);
+          expect(action.type).toEqual(Types.FETCH_POSTS_FAILURE);
           done();
         });
       });
   
       it('has error message in payload', (done) => {
-        epic.subscribe((action: PostsAction.FetchPostsFailure) => {
+        epic.subscribe((action: Types.FetchPostsFailure) => {
           expect(action).toHaveProperty('error');
           expect(action.error).toEqual(errorMessage);
           done();

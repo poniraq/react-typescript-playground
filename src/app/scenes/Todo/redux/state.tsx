@@ -1,5 +1,9 @@
 import { Todo } from './types';
 
+export interface StoreState {
+  todo: TodoState;
+}
+
 export interface TodoState {
   title: string;
   todos: Todo[];

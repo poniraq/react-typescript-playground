@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PoseGroup } from 'react-pose';
-import { Todo } from '@redux/todo/types';
 import { PosedComponent } from '@app/components';
+import { Todo } from '../../redux/types';
 import { TodoItem } from './components';
 import './TodoBody.scss';
 

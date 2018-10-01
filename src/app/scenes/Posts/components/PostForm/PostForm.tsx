@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Post } from '@redux/posts';
 import { Button, Form, Input } from 'antd';
+import { Post } from '../../redux/types';
 import './PostForm.scss';
 
 

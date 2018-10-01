@@ -1,5 +1,5 @@
 import { TodoReducer } from './reducer';
-import { TodoAction } from './actions';
+import { Creators } from './actions';
 import { DefaultState, TodoState } from './state';
 import { Todo } from './types';
 
@@ -22,34 +22,34 @@ describe('TodoReducer', () => {
   });
 
   it('should do nothing on ADD_TODO', () => {
-    const action = TodoAction.AddTodo(todo);
+    const action = Creators.AddTodo(todo);
     expect(reducer(state, action)).toEqual(state);
   });
   it('should add item on NEW_TODO', () => {
-    const action = TodoAction.NewTodo(todo);
+    const action = Creators.NewTodo(todo);
     expect(reducer(state, action).todos.length).toEqual(state.todos.length + 1);
   });
 
 
   it('should set "fetching" to true on FETCH_TODOS', () => {
-    const action = TodoAction.FetchTodos();
+    const action = Creators.FetchTodos();
     expect(reducer(state, action).fetching).toEqual(true);
   });
   it('should set "fetching" to false on FETCH_TODOS_SUCCESS', () => {
-    const action = TodoAction.FetchTodosSuccess([todo]);
+    const action = Creators.FetchTodosSuccess([todo]);
     expect(reducer(state, action).fetching).toEqual(false);
   });
   it('should replace "posts" with payload on FETCH_TODOS_SUCCESS', () => {
-    const action = TodoAction.FetchTodosSuccess([todo]);
+    const action = Creators.FetchTodosSuccess([todo]);
     expect(reducer(state, action).todos).toEqual([todo]);
   });
 
   it('should do nothing on REMOVE_TODO', () => {
-    const action = TodoAction.RemoveTodo(todo);
+    const action = Creators.RemoveTodo(todo);
     expect(reducer(state, action)).toEqual(state);
   });
   it('should replace todo with payload on TODO_REMOVED', () => {
-    const action = TodoAction.TodoRemoved({ ...todo, id: 1, deleted: true });
+    const action = Creators.TodoRemoved({ ...todo, id: 1, deleted: true });
     const oldState: TodoState = { ...state, todos: [{ ...todo, id: 1 }]};
 
     expect(reducer(oldState, action).todos.length).toEqual(oldState.todos.length);
