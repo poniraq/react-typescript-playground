@@ -1,6 +1,11 @@
-import { StoreState } from './state';
+import { Selector } from '@redux';
+import { compose } from 'redux';
+import { inject } from './injector';
+import { Todo, TodoError, TodoMount, TodoState } from './types';
 
-export const getTodoTitle = (state: StoreState) => state.todo.title;
-export const getTodos = (state: StoreState) => state.todo.todos;
-export const getTodosFetching = (state: StoreState) => state.todo.fetching;
-export const getTodosError = (state: StoreState) => state.todo.error;
+export const state: Selector<TodoState> = (state) => inject(state)[TodoMount];
+
+export const title: Selector<string> = compose((state) => state.title, state);
+export const todos: Selector<Todo[]> = compose((state) => state.todos, state);
+export const fetching: Selector<boolean> = compose((state) => state.fetching, state);
+export const error: Selector<TodoError> = compose((state) => state.error, state);

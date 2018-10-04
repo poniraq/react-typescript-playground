@@ -1,15 +1,5 @@
-import { Todo } from './types';
+import { Todo, TodoState } from './types';
 
-export interface StoreState {
-  todo: TodoState;
-}
-
-export interface TodoState {
-  title: string;
-  todos: Todo[];
-  fetching: boolean;
-  error: string | undefined;
-}
 export const DefaultState: TodoState = {
   title: 'My Todos',
   todos: [],

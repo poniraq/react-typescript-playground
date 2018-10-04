@@ -2,21 +2,21 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import TodoBodyComponent from '../components/TodoBody';
 
-import * as selectors from '../redux/selectors';
-import { Creators, Types } from '../redux/actions';
-import { StoreState } from '../redux/state';
+import { AppState } from '@redux';
+import { Actions, ActionTypes } from '../redux';
 import { Todo } from '../redux/types';
+import * as s from '../redux/selectors';
 
-export function mapStateToProps(state: StoreState) {
+export function mapStateToProps(state: AppState) {
   return {
-    todos: selectors.getTodos(state),
-    loading: selectors.getTodosFetching(state)
+    todos: s.todos(state),
+    loading: s.fetching(state)
   };
 }
-export function mapDispatchToProps(dispatch: Dispatch<Types.Type>) {
+export function mapDispatchToProps(dispatch: Dispatch<ActionTypes.All>) {
   return {
-    fetch: () => dispatch(Creators.FetchTodos()),
-    remove: (todo: Todo) => dispatch(Creators.RemoveTodo(todo))
+    fetch: () => dispatch(Actions.FetchTodos()),
+    remove: (todo: Todo) => dispatch(Actions.RemoveTodo(todo))
   };
 }
 

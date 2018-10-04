@@ -1,9 +1,9 @@
-import { Post } from '../types';
-import Creators from './creators';
+import { Post } from './types';
+import Actions from './actions';
 
 describe('PostsAction', () => {
   describe('FetchPosts', () => {
-    const action = Creators.FetchPosts();
+    const action = Actions.FetchPosts();
 
     it('creates without error', () => {
       expect(action).toBeDefined();
@@ -12,7 +12,7 @@ describe('PostsAction', () => {
 
   describe('FetchPostsSuccess', () => {
     const posts: Post[] = [];
-    const action = Creators.FetchPostsSuccess(posts);
+    const action = Actions.FetchPostsSuccess(posts);
 
     it('creates without error', () => {
       expect(action).toBeDefined();
@@ -24,7 +24,7 @@ describe('PostsAction', () => {
 
   describe('FetchPostsFailure', () => {
     const error = 'some generic error';
-    const action = Creators.FetchPostsFailure(error);
+    const action = Actions.FetchPostsFailure(error);
 
     it('creates without error', () => {
       expect(action).toBeDefined();
@@ -36,7 +36,7 @@ describe('PostsAction', () => {
 
   describe('AddPost', () => {
     const post: Post = { id: undefined, title: 'some title', body: 'some text' };
-    const action = Creators.AddPost(post);
+    const action = Actions.AddPost(post);
 
     it('creates without error', () => {
       expect(action).toBeDefined();
@@ -60,7 +60,7 @@ describe('PostsAction', () => {
 
   describe('NewPost', () => {
     const post: Post = { id: undefined, title: 'some title', body: 'some text' };
-    const action = Creators.NewPost(post);
+    const action = Actions.NewPost(post);
 
     it('creates without error', () => {
       expect(action).toBeDefined();

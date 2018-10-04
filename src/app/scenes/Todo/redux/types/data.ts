@@ -3,3 +3,4 @@ export interface Todo {
   title: string;
   deleted?: boolean;
 }
+export type TodoError = string | undefined;

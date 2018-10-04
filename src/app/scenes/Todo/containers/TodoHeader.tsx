@@ -1,19 +1,19 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-
-import * as selectors from '../redux/selectors';
-import { Types, Creators } from '../redux/actions';
-import { StoreState } from '../redux/state';
 import TodoHeaderComponent from '../components/TodoHeader';
 
-export function mapStateToProps(state: StoreState) {
+import { AppState } from '@redux';
+import { Actions, ActionTypes } from '../redux';
+import * as s from '../redux/selectors';
+
+export function mapStateToProps(state: AppState) {
   return {
-    title: selectors.getTodoTitle(state)
+    title: s.title(state)
   };
 }
-export function mapDispatchToProps(dispatch: Dispatch<Types.Type>) {
+export function mapDispatchToProps(dispatch: Dispatch<ActionTypes.All>) {
 return {
-    add: (title: string) => dispatch(Creators.AddTodo({ id: undefined, title }))
+    add: (title: string) => dispatch(Actions.AddTodo({ id: undefined, title }))
   };
 }
 

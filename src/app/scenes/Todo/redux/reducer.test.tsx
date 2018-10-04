@@ -1,7 +1,7 @@
+import { Actions } from './actions';
 import { TodoReducer } from './reducer';
-import { Creators } from './actions';
-import { DefaultState, TodoState } from './state';
-import { Todo } from './types';
+import { DefaultState } from './state';
+import { Todo, TodoState } from './types';
 
 const todo: Todo = { id: undefined, title: 'some_title' };
 
@@ -22,34 +22,34 @@ describe('TodoReducer', () => {
   });
 
   it('should do nothing on ADD_TODO', () => {
-    const action = Creators.AddTodo(todo);
+    const action = Actions.AddTodo(todo);
     expect(reducer(state, action)).toEqual(state);
   });
   it('should add item on NEW_TODO', () => {
-    const action = Creators.NewTodo(todo);
+    const action = Actions.NewTodo(todo);
     expect(reducer(state, action).todos.length).toEqual(state.todos.length + 1);
   });
 
 
   it('should set "fetching" to true on FETCH_TODOS', () => {
-    const action = Creators.FetchTodos();
+    const action = Actions.FetchTodos();
     expect(reducer(state, action).fetching).toEqual(true);
   });
   it('should set "fetching" to false on FETCH_TODOS_SUCCESS', () => {
-    const action = Creators.FetchTodosSuccess([todo]);
+    const action = Actions.FetchTodosSuccess([todo]);
     expect(reducer(state, action).fetching).toEqual(false);
   });
   it('should replace "posts" with payload on FETCH_TODOS_SUCCESS', () => {
-    const action = Creators.FetchTodosSuccess([todo]);
+    const action = Actions.FetchTodosSuccess([todo]);
     expect(reducer(state, action).todos).toEqual([todo]);
   });
 
   it('should do nothing on REMOVE_TODO', () => {
-    const action = Creators.RemoveTodo(todo);
+    const action = Actions.RemoveTodo(todo);
     expect(reducer(state, action)).toEqual(state);
   });
   it('should replace todo with payload on TODO_REMOVED', () => {
-    const action = Creators.TodoRemoved({ ...todo, id: 1, deleted: true });
+    const action = Actions.TodoRemoved({ ...todo, id: 1, deleted: true });
     const oldState: TodoState = { ...state, todos: [{ ...todo, id: 1 }]};
 
     expect(reducer(oldState, action).todos.length).toEqual(oldState.todos.length);

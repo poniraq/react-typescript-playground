@@ -1,11 +1,11 @@
-import { Types, Creators } from './actions';
+import { ActionType, TodoState } from './types';
+import TodoActions from './actions';
 import TodoReducer from './reducer';
-import TodoState from './state';
 import TodoEpic from './epic';
 
 export {
-  Types as ActionTypes,
-  Creators as ActionCreators,
+  TodoActions as Actions,
+  ActionType as ActionTypes,
   TodoEpic as Epic,
   TodoReducer as Reducer,
   TodoState as State

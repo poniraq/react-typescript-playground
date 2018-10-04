@@ -2,11 +2,12 @@ import * as React from 'react';
 import { Provider } from 'react-redux';
 import { applyMiddleware, compose, Store } from 'redux';
 import { createEpicMiddleware } from 'redux-observable';
-import { createInjectStore as InjectStore, ReducerNode } from 'redux-reducers-injector';
-import { AppAction, AppEpic, AppReducer, AppState } from './root';
+import { ReducerNode } from 'redux-reducers-injector';
+import { AppEpic, AppReducer } from './root';
+import { CreateStore } from './utils';
 
 
-export function createStore(reducer: ReducerNode<AppState, AppAction>) {
+export function createStore(reducer: ReducerNode) {
   const composeEnhancers = global.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
   
   const epicDependencies = {};
@@ -14,7 +15,7 @@ export function createStore(reducer: ReducerNode<AppState, AppAction>) {
   const middleware = [ epicMiddleware ];
   const enhancer = composeEnhancers(applyMiddleware(...middleware));
  
-  const store = InjectStore(reducer, enhancer); 
+  const store = CreateStore(reducer, enhancer);
   epicMiddleware.run(AppEpic);
 
   return store;

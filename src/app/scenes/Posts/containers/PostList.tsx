@@ -2,20 +2,20 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import PostList from '../components/PostList';
 
-import { ActionCreators, ActionTypes } from '../redux';
-import * as selectors from '../redux/selectors';
-import { StoreState } from '../redux/state';
+import { AppState } from '@redux';
+import { Actions, ActionTypes } from '../redux';
+import * as s from '../redux/selectors';
 
-export function mapStateToProps(state: StoreState) {
+export function mapStateToProps(state: AppState) {
   return {
-    posts: selectors.getPosts(state),
-    error: selectors.getPostsError(state),
-    loading: selectors.getPostsFetching(state)
+    posts: s.posts(state),
+    error: s.error(state),
+    loading: s.fetching(state)
   };
 }
-export function mapDispatchToProps(dispatch: Dispatch<ActionTypes.Type>) {
+export function mapDispatchToProps(dispatch: Dispatch<ActionTypes.All>) {
   return {
-    fetch: () => dispatch(ActionCreators.FetchPosts())
+    fetch: () => dispatch(Actions.FetchPosts())
   };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(PostList);

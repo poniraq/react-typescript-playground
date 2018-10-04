@@ -15,6 +15,7 @@ const getClientEnvironment = require('./env');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const tsImportPluginFactory = require('ts-import-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -170,6 +171,10 @@ module.exports = {
                     before: [ tsImportPluginFactory({
                       libraryDirectory: 'es',
                       libraryName: 'antd',
+                      style: true,
+                    }), tsImportPluginFactory({
+                      libraryDirectory: 'lib',
+                      libraryName: '@ant-design',
                       style: true,
                     }) ]
                   })
@@ -436,6 +441,10 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: module => module.context && module.context.indexOf('node_modules') !== -1
+    }),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      openAnalyzer: false
     })
   ],
   // Some libraries import Node modules but don't use them in the browser.

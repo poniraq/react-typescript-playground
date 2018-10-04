@@ -1,10 +1,11 @@
-import { TitleAction } from './actions';
+import { Actions } from './actions';
 import { TitleReducer } from './reducer';
-import { TitleState } from './state';
+import { TitleState, ActionType } from './types';
 import { TitleEpic } from './epic';
 
 export {
-  TitleAction as Action,
+  Actions as Actions,
+  ActionType as ActionTypes,
   TitleEpic as Epic,
   TitleReducer as Reducer,
   TitleState as State

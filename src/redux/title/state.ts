@@ -1,3 +1,4 @@
-export const DefaultState = 'react-typescript';
-export type TitleState = string;
-export default TitleState;
+import { TitleState } from './types';
+
+export const DefaultState: TitleState = 'react-typescript';
+export default DefaultState;

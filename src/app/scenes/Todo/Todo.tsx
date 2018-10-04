@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { TodoBody, TodoHeader } from './containers';
-import './redux/injector';
 import './Todo.scss';
 
 

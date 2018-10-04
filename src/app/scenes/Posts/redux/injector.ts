@@ -1,5 +1,8 @@
-import { InjectEpic, InjectReducer } from '@redux';
-import { Reducer, Epic } from './index';
+import { AppState } from '@redux';
+import { inject as ReduxInject } from '@redux/injector';
+import { Epic, Reducer } from './index';
+import { PostsMount, StoreState } from './types';
 
-InjectReducer('posts', Reducer);
-InjectEpic(Epic);
+export function inject(state?: AppState) {
+  return ReduxInject<StoreState>(PostsMount, Reducer, Epic, state);
+}

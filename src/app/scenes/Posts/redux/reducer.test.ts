@@ -1,6 +1,6 @@
 import { PostsReducer } from './reducer';
 import { DefaultState } from './state';
-import { Creators } from './actions';
+import { Actions } from './actions';
 import { Post } from './types';
 
 describe('PostsReducer', () => {
@@ -21,7 +21,7 @@ describe('PostsReducer', () => {
   });
 
   describe('FETCH_POSTS', () => {
-    const action = Creators.FetchPosts();
+    const action = Actions.FetchPosts();
     const oldState = {...state, error: 'some_error'};
     const newState = reducer(oldState, action);
 
@@ -46,7 +46,7 @@ describe('PostsReducer', () => {
 
   describe('FETCH_POSTS_SUCCESS', () => {
     const posts: Post[] = [{ id: 1, title: 'some_title', body: 'some_body' }];
-    const action = Creators.FetchPostsSuccess(posts);
+    const action = Actions.FetchPostsSuccess(posts);
     const oldState = {...state, error: 'some_error', posts: [], fetching: true};
     const newState = reducer(oldState, action);
 
@@ -73,7 +73,7 @@ describe('PostsReducer', () => {
   describe('FETCH_POSTS_FAILURE', () => {
     const posts: Post[] = [{ id: 1, title: 'some_title', body: 'some_body' }];
     const error = 'some_error_message';
-    const action = Creators.FetchPostsFailure(error);
+    const action = Actions.FetchPostsFailure(error);
     const oldState = {...state, posts: posts, fetching: true};
     const newState = reducer(oldState, action);
 
@@ -99,7 +99,7 @@ describe('PostsReducer', () => {
 
   describe('ADD_POST', () => {
     const post: Post = { id: 1, title: 'some_title', body: 'some_body' };
-    const action = Creators.AddPost(post);
+    const action = Actions.AddPost(post);
     const oldState = {...state, posts: []};
     const newState = reducer(oldState, action);
 
@@ -110,7 +110,7 @@ describe('PostsReducer', () => {
 
   describe('NEW_POST', () => {
     const post: Post = { id: 1, title: 'some_title', body: 'some_body' };
-    const action = Creators.NewPost(post);
+    const action = Actions.NewPost(post);
     const oldState = {...state, posts: []};
     const newState = reducer(oldState, action);
 

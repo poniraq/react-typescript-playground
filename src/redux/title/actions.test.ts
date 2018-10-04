@@ -1,10 +1,10 @@
-import { TitleAction } from './actions';
+import Actions from './actions';
 
 describe('TitleAction', () => {
   const title = 'some_title';
 
   describe('SetTitle', () => {
-    const action = TitleAction.SetTitle(title);
+    const action = Actions.SetTitle(title);
 
     it('creates without error', () => {
       expect(action).toBeDefined();
@@ -16,7 +16,7 @@ describe('TitleAction', () => {
   });
 
   describe('NewTitle', () => {
-    const action = TitleAction.NewTitle(title);
+    const action = Actions.NewTitle(title);
 
     it('creates without error', () => {
       expect(action).toBeDefined();

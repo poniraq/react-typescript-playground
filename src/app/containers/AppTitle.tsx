@@ -1,9 +1,9 @@
-import { AppAction, State, selectors } from '@redux';
+import { AppAction, AppState, selectors } from '@redux';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { Title } from '../components/Title';
 
-export function mapStateToProps(state: State) {
+export function mapStateToProps(state: AppState) {
     return { title: selectors.getTitle(state) };
 }
 export function mapDispatchToProps(_dispatch: Dispatch<AppAction>) {

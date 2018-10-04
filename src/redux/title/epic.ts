@@ -1,14 +1,12 @@
-import { Epic, ofType } from 'redux-observable';
+import { ofType } from 'redux-observable';
 import { map } from 'rxjs/operators';
-import { TitleAction } from './actions';
-import { TitleState } from './state';
+import { Actions } from './actions';
+import { ActionType, TitleEpic as Epic } from './types';
 
-import ActionType = TitleAction.Type;
-
-export const TitleEpic: Epic<ActionType, ActionType, TitleState> = (action$) =>
+export const TitleEpic: Epic = (action$) =>
   action$.pipe(
-    ofType(TitleAction.SET_TITLE),
-    map((action: TitleAction.SetTitle) => TitleAction.NewTitle(action.payload)
+    ofType(ActionType.SET_TITLE),
+    map((action: ActionType.SetTitle) => Actions.NewTitle(action.payload)
   ));
 
 export default TitleEpic;

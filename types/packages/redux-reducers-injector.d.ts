@@ -1,15 +1,15 @@
 declare module 'redux-reducers-injector' {
   import { Reducer, Store, StoreEnhancer, Action } from 'redux';
 
-  export interface ReducerNode<S, A extends Action> {
-    [key: string]: Reducer<S, A> | ReducerNode<S, A>;
+  export interface ReducerNode {
+    [key: string]: Reducer | ReducerNode;
   }
 
-  export function combineReducersRecurse<S, A extends Action>(reducers: ReducerNode<S, A> | Reducer<S, A>): Reducer<S, A>;
+  export function combineReducersRecurse(reducers: ReducerNode | Reducer): Reducer;
   
-  export function createInjectStore<S, A extends Action>(reducerTree: ReducerNode<S, A> | Reducer<S, A>, enhancer?: StoreEnhancer<S, A>): Store<S, A>;
-  export function createInjectStore<S, A extends Action>(reducerTree: ReducerNode<S, A> | Reducer<S, A>, preloadedState: S, enhancer?: StoreEnhancer<S, A>): Store<S, A>;
+  export function createInjectStore(reducerTree: ReducerNode | Reducer, enhancer?: StoreEnhancer): Store;
+  export function createInjectStore<S>(reducerTree: ReducerNode | Reducer, preloadedState: S, enhancer?: StoreEnhancer): Store;
 
-  export function reloadReducer<S, A extends Action>(key: string, reducer: ReducerNode<S, A> | Reducer<S, A>): void;
-  export function injectReducer<S, A extends Action>(key: string, reducer: ReducerNode<S, A> | Reducer<S, A>, force?: boolean): void;
+  export function reloadReducer(key: string, reducer: ReducerNode | Reducer): void;
+  export function injectReducer(key: string, reducer: ReducerNode | Reducer, force?: boolean): void;
 }

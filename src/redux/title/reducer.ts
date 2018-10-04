@@ -1,12 +1,11 @@
-import { TitleAction } from './actions';
-import { DefaultState, TitleState } from './state';
-import { Reducer } from 'redux';
+import { ActionType, TitleReducer as Reducer } from './types';
+import { DefaultState } from './state';
 
-export const TitleReducer: Reducer<TitleState, TitleAction.Type> = function (title = DefaultState, action) {
+export const TitleReducer: Reducer = function (title = DefaultState, action) {
   switch (action.type) {
-    case TitleAction.SET_TITLE:
+    case ActionType.SET_TITLE:
       return title;
-    case TitleAction.NEW_TITLE:
+    case ActionType.NEW_TITLE:
       return action.payload;
     default:
       return title;

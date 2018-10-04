@@ -1,12 +1,12 @@
-import Creators from './creators';
-import { Todo } from '../types';
+import Actions from './actions';
+import { Todo } from './types';
 
 const todo: Todo = { id: undefined, title: 'some_todo_title' };
 const error = 'some_error';
 
-describe('Creators', () => {
+describe('Actions', () => {
   describe('AddTodo', () => {
-    const action = Creators.AddTodo(todo);
+    const action = Actions.AddTodo(todo);
 
     it('creates without error', () => {
       expect(action).toBeDefined();
@@ -18,7 +18,7 @@ describe('Creators', () => {
   });
 
   describe('NewTodo', () => {
-    const action = Creators.NewTodo(todo);
+    const action = Actions.NewTodo(todo);
 
     it('creates without error', () => {
       expect(action).toBeDefined();
@@ -31,7 +31,7 @@ describe('Creators', () => {
 
   
   describe('FetchTodos', () => {
-    const action = Creators.FetchTodos();
+    const action = Actions.FetchTodos();
 
     it('creates without error', () => {
       expect(action).toBeDefined();
@@ -39,7 +39,7 @@ describe('Creators', () => {
   });
 
   describe('FetchTodosSuccess', () => {
-    const action = Creators.FetchTodosSuccess([todo]);
+    const action = Actions.FetchTodosSuccess([todo]);
 
     it('creates without error', () => {
       expect(action).toBeDefined();
@@ -51,7 +51,7 @@ describe('Creators', () => {
   });
 
   describe('FetchTodosFailure', () => {
-    const action = Creators.FetchTodosFailure(error);
+    const action = Actions.FetchTodosFailure(error);
 
     it('creates without error', () => {
       expect(action).toBeDefined();
@@ -64,7 +64,7 @@ describe('Creators', () => {
 
 
   describe('RemoveTodo', () => {
-    const action = Creators.RemoveTodo(todo);
+    const action = Actions.RemoveTodo(todo);
 
     it('creates without error', () => {
       expect(action).toBeDefined();
@@ -76,7 +76,7 @@ describe('Creators', () => {
   });
 
   describe('TodoRemoved', () => {
-    const action = Creators.TodoRemoved(todo);
+    const action = Actions.TodoRemoved(todo);
 
     it('creates without error', () => {
       expect(action).toBeDefined();

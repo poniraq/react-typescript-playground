@@ -3,3 +3,5 @@ export interface Post {
   title: string;
   body: string;
 }
+
+export type PostError = string | undefined;

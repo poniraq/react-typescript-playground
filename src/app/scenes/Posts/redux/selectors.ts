@@ -1,6 +1,11 @@
-import { StoreState } from './state';
+import { Selector } from '@redux';
+import { compose } from 'redux';
+import { inject } from './injector';
+import { Post, PostError, PostsMount, PostsState } from './types';
 
-export const getNewPost = (state: StoreState) => state.posts.newPost;
-export const getPosts = (state: StoreState) => state.posts.posts;
-export const getPostsError = (state: StoreState) => state.posts.error;
-export const getPostsFetching = (state: StoreState) => state.posts.fetching;
+export const state: Selector<PostsState> = (state) => inject(state)[PostsMount];
+
+export const newPost: Selector<Post> = compose((state) => state.newPost, state);
+export const posts: Selector<Post[]> = compose((state) => state.posts, state);
+export const error: Selector<PostError> = compose((state) => state.error, state);
+export const fetching: Selector<boolean> = compose((state) => state.fetching, state);
