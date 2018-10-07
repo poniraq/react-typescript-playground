@@ -6,23 +6,10 @@ describe('Redux#root', () => {
   });
   
   it('has RootEpic', () => {
-    expect(root).toHaveProperty('RootEpic');
+    expect(root).toHaveProperty('AppEpic');
   });
 
   it('has RootReducer', () => {
-    expect(root).toHaveProperty('RootReducer');
-  });
-
-  describe('selectors', () => {
-    const title = 'some_title';
-    const selectors = root.selectors;
-
-    it('is defined', () => {
-      expect(root).toHaveProperty('selectors');
-    });
-
-    it('has getTitle', () => {
-      expect(selectors.getTitle({ title } as any)).toEqual(title);
-    });
+    expect(root).toHaveProperty('AppReducer');
   });
 });

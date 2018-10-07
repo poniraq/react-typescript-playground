@@ -1,4 +1,5 @@
 import { StoreProvider } from '@redux';
+import * as injector from '@redux/injector';
 import * as enzyme from 'enzyme';
 import * as React from 'react';
 import PostForm from './PostForm';
@@ -20,6 +21,10 @@ describe('PostForm', () => {
   });
 
   describe('mapStateToProps', () => {
+    beforeAll(() => {
+      spyOn(injector, 'inject').and.callFake(function() { return arguments[3]; });
+    });
+
     it('maps state to pros without errors', () => {
       expect(mapStateToProps(state as any)).toBeDefined();
     });

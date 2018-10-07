@@ -19,9 +19,7 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "paths": {
-      "@app/*": ["src/app/*"],
-      "@redux": ["src/redux"],
-      "@redux/*": ["src/redux/*"]
+      "@*": ["src/*"]
     }
   },
   "exclude": [

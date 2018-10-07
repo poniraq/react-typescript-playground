@@ -9,6 +9,8 @@ export function CreateStore(reducer: Reducer | ReducerNode, enhancer?: StoreEnha
   return store;
 }
 
+export function getStore() { return store; }
+
 export function InjectEpic(epic: Epic) {
   EpicPipe$.next(epic);
 }

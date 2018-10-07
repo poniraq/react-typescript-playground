@@ -109,10 +109,9 @@
     ],
     "moduleNameMapper": {
       "^react-native$": "react-native-web",
-      "src/(.*)": "<rootDir>/src/$1",
-      "@app/(.*)": "<rootDir>/src/app/$1",
-      "@redux": "<rootDir>/src/redux",
-      "@redux/(.*)": "<rootDir>/src/redux/$1"
+      "src(.*)": "<rootDir>/src$1",
+      "@app(.*)": "<rootDir>/src/app$1",
+      "@redux(.*)": "<rootDir>/src/redux$1"
     },
     "moduleFileExtensions": [
       "web.ts",

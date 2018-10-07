@@ -1,6 +1,7 @@
-import { StoreProvider } from '@redux';
-import * as enzyme from 'enzyme';
 import * as React from 'react';
+import * as enzyme from 'enzyme';
+import { StoreProvider } from '@redux';
+import * as injector from '@redux/injector';
 import PostList, { mapDispatchToProps, mapStateToProps } from './PostList';
 
 
@@ -11,8 +12,7 @@ describe('PostList', () => {
 
   const state = { posts: { posts: [post], error, fetching }};
 
-  // TODO: resolve jest es6 import issue
-  xit('renders without crashing', () => {
+  it('renders without crashing', () => {
     const rendered = enzyme.mount(
       <StoreProvider>
         <PostList />
@@ -24,7 +24,11 @@ describe('PostList', () => {
   });
 
   describe('mapStateToProps', () => {
-    it('maps state to pros without errors', () => {
+    beforeAll(() => {
+      spyOn(injector, 'inject').and.callFake(function() { return arguments[3]; });
+    });
+
+    it('maps state to props without errors', () => {
       expect(mapStateToProps(state as any)).toBeDefined();
     });
     
